@@ -15,7 +15,6 @@ I1 DB "Please enter first number: ", 0
 I2 DB 10, "Please enter second number: ", 0
 Output DB 10, "Answer is %d", 10, 0
 Rerun DB "Would you like to multiply another number? If so please enter the first number, otherwise enter 0:", 0
-limit DB "You hit the 64bit integer limit, please try again with a smaller number", 10
 getInteger DB "%d", 0
 
 getDB DB 0
@@ -93,12 +92,6 @@ endjmp:
 ret
 
 
-overflow: 
-lea rcx, limit
-mov rax, 0
-call printString
-
-jmp returnfromoverflow
 
 main ENDP
 
@@ -131,4 +124,5 @@ printString PROC
 printString ENDP
 
 END
+
 
