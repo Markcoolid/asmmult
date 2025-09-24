@@ -100,11 +100,12 @@ main ENDP
 multproc PROC
 	mov ecx, mult2
 	mov edx, 0
+	cmp ecx, 0
 	notZero:
 	add edx, mult1
 	cmp ecx, 0
-	jl negative
-	jg positive
+	jl negativeloop
+	jg positiveloop
 	jz zero
 	jnz notZero
 
@@ -113,15 +114,21 @@ zero:
 	mov edx, 0
 	ret
 
-positive:
+zeronegative: 
+	mov ANSWER, edx
+	neg ANSWER
+	mov edx, 0
+	ret
+
+positiveloop:
 	sub ecx, 1
 	jz zero
 	jnz notZero
 	ret
 
-negative:
+negativeloop:
 	add ecx, 1
-	jz zero
+	jz zeronegative
 	jnz notZero
 	ret
 
