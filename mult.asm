@@ -102,7 +102,9 @@ multproc PROC
 	mov edx, 0
 	notZero:
 	add edx, mult1
-	sub ecx, 1
+	cmp ecx, 0
+	jl negative
+	jg positive
 	jz zero
 	jnz notZero
 
@@ -110,6 +112,20 @@ zero:
 	mov ANSWER, edx
 	mov edx, 0
 	ret
+
+positive:
+	sub ecx, 1
+	jz zero
+	jnz notZero
+	ret
+
+negative:
+	add ecx, 1
+	jz zero
+	jnz notZero
+	ret
+
+
 multproc ENDP
 
 
