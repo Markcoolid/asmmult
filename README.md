@@ -1,1 +1,1 @@
-A simple asm program to multiply two integers together using input from the console using repeated addition.
+My first MASM program, I am aware, and was aware at the time of writing this, that multiplication is a function that MASM supports by default. I was just messing around to learn more about how computers work at the lowest level.
